@@ -1,2 +1,2 @@
 # druk
-A silly pointless blogging platform in node.
+Personal website built using Fornax
