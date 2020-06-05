@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Some nice post title
-author: @k_cieslak
-published: 2020-02-19
+author: @rogerjmexico
+published: 2020-06-03
 ---
 # Introduction
 
