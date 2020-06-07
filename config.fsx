@@ -38,5 +38,6 @@ let config = {
         {Script = "index.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
         {Script = "about.fsx"; Trigger = Once; OutputFile = NewFileName "about.html" }
         {Script = "contact.fsx"; Trigger = Once; OutputFile = NewFileName "contact.html" }
+        {Script = "rss.fsx"; Trigger = Once; OutputFile = NewFileName "feed.xml" }
     ]
 }
