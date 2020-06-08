@@ -34,16 +34,19 @@ let layout (ctx : SiteContents) active bodyCnt =
     let pages = ctx.TryGetValues<Pageloader.Page> () |> Option.defaultValue Seq.empty
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
     let ttl =
-      siteInfo
-      |> Option.map (fun si -> si.title)
-      |> Option.defaultValue ""
+          siteInfo
+          |> Option.map (fun si -> si.title)
+          |> Option.defaultValue ""
 
     let menuEntries =
-      pages
-      |> Seq.map (fun p ->
-        let cls = if p.title = active then "navbar-item is-active" else "navbar-item"
-        a [Class cls; Href p.link] [!! p.title ])
-      |> Seq.toList
+        pages
+        |> Seq.map (fun p ->
+            let cls = 
+                if p.title = active then "navbar-item is-active"
+                else "navbar-item"
+            a [Class cls; Href p.link] [!! p.title ]
+        )
+        |> Seq.toList
 
     html [] [
         head [] [
@@ -55,33 +58,36 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "stylesheet"; Href "https://fonts.googleapis.com/css?family=Open+Sans"]
             link [Rel "stylesheet"; Href "https://unpkg.com/bulma@0.8.0/css/bulma.min.css"]
             link [Rel "stylesheet"; Type "text/css"; Href "/style/style.css"]
-
         ]
         body [] [
-          nav [Class "navbar"] [
-            div [Class "container"] [
-              div [Class "navbar-brand"] [
-                a [Class "navbar-item"; Href "/"] [
-                  img [Src "/images/bulma.png"; Alt "Logo"]
+            nav [Class "navbar"] [
+                div [Class "container"] [
+                    div [Class "navbar-brand"] [
+                        a [Class "navbar-item"; Href "/"] [
+                            img [Src "/images/bulma.png"; Alt "Logo"]
+                        ]
+                        span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
+                            span [] []
+                            span [] []
+                            span [] []
+                        ]
+                    ]
+                    div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
                 ]
-                span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
-                  span [] []
-                  span [] []
-                  span [] []
-                ]
-              ]
-              div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
             ]
-          ]
-          yield! bodyCnt
+            yield! bodyCnt
         ]
     ]
 
 let render (ctx : SiteContents) cnt =
-  let disableLiveRefresh = ctx.TryGetValue<Postloader.PostConfig> () |> Option.map (fun n -> n.disableLiveRefresh) |> Option.defaultValue false
-  cnt
-  |> HtmlElement.ToString
-  |> fun n -> if disableLiveRefresh then n else injectWebsocketCode n
+    let disableLiveRefresh =
+        ctx.TryGetValue<Postloader.PostConfig> ()
+        |> Option.map (fun n -> n.disableLiveRefresh)
+        |> Option.defaultValue false
+
+    cnt
+    |> HtmlElement.ToString
+    |> fun n -> if disableLiveRefresh then n else injectWebsocketCode n
 
 let published (post: Postloader.Post) =
     post.published
@@ -92,10 +98,12 @@ let postLayout (useSummary: bool) (post: Postloader.Post) =
     div [Class "card article"] [
         div [Class "card-content"] [
             div [Class "media-content has-text-centered"] [
-                p [Class "title article-title"; ] [ a [Href post.link] [!! post.title]]
+                p [Class "title article-title"; ] [
+                    a [Href post.link] [!! post.title]
+                ]
                 p [Class "subtitle is-6 article-subtitle"] [
-                a [Href "#"] [!! (defaultArg post.author "")]
-                !! (sprintf "on %s" (published post))
+                    a [Href "#"] [!! (defaultArg post.author "")]
+                    !! (sprintf "on %s" (published post))
                 ]
             ]
             div [Class "content article-body"] [

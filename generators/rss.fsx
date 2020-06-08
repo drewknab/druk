@@ -7,7 +7,7 @@ open System
 open System.Xml.Linq
 
 
-let myChannelFeed
+let channelFeed
           (channelTitle : string)
           (channelLink : string)
           (channelDescription : string)
@@ -47,7 +47,7 @@ let generate' (ctx : SiteContents) (_ : string) =
 
     [
       "<?xml version='1.0' encoding='UTF-8' ?>"
-      myChannelFeed "test" "link" "summary" posts
+      channelFeed "test" "link" "summary" posts
     ] |> String.concat "\n"
 
 let generate (ctx : SiteContents) (projectRoot : string) (page: string) =

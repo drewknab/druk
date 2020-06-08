@@ -14,20 +14,22 @@ let postPredicate (projectRoot: string, page: string) =
 
 let staticPredicate (projectRoot: string, page: string) =
     let ext = Path.GetExtension page
-    if page.Contains "_public" ||
-       page.Contains "_bin" ||
-       page.Contains "_lib" ||
-       page.Contains "_data" ||
-       page.Contains "_settings" ||
-       page.Contains "_config.yml" ||
-       page.Contains ".sass-cache" ||
-       page.Contains ".git" ||
-       page.Contains ".ionide" ||
-       ext = ".fsx"
-    then
-        false
-    else
-        true
+    not (
+        page.Contains "_public" ||
+        page.Contains "_bin" ||
+        page.Contains "_lib" ||
+        page.Contains "_data" ||
+        page.Contains "_settings" ||
+        page.Contains "_config.yml" ||
+        page.Contains ".sass-cache" ||
+        page.Contains ".git" ||
+        page.Contains ".ionide" ||
+        page.Contains ".netlify" ||
+        page.Contains ".editorconfig" ||
+        page.Contains "README" ||
+        ext = ".fsx" ||
+        ext = ".sh"
+    )
 
 let config = {
     Generators = [
