@@ -6,10 +6,10 @@ open Html
 let generate' (ctx : SiteContents) (_: string) =
     let posts = ctx.TryGetValues<Postloader.Post> () |> Option.defaultValue Seq.empty
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
-    let desc =
+    let (desc, title) =
         siteInfo
-        |> Option.map (fun si -> si.description)
-        |> Option.defaultValue ""
+        |> Option.map (fun si -> (si.description, si.title))
+        |> Option.defaultValue ("", "")
 
     let psts =
         posts
@@ -21,7 +21,8 @@ let generate' (ctx : SiteContents) (_: string) =
         section [Class "hero is-info is-medium is-bold"] [
             div [Class "hero-body"] [
                 div [Class "container has-text-centered"] [
-                    h1 [Class "title"] [!!desc]
+                    h1 [Class "title"] [!!title]
+                    span [] [!!desc]
                 ]
             ]
         ]

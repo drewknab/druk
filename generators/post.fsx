@@ -11,16 +11,17 @@ let generate' (ctx : SiteContents) (page: string) =
         |> Seq.find (fun n -> n.file = page)
 
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
-    let desc =
+    let (desc, title) =
         siteInfo
-        |> Option.map (fun si -> si.description)
-        |> Option.defaultValue ""
+        |> Option.map (fun si -> (si.description, si.title))
+        |> Option.defaultValue ("", "")
 
     Layout.layout ctx post.title [
         section [Class "hero is-info is-medium is-bold"] [
             div [Class "hero-body"] [
                 div [Class "container has-text-centered"] [
-                    h1 [Class "title"] [!!desc]
+                    h1 [Class "title"] [!!title]
+                    span [] [!!desc]
                 ]
             ]
         ]
