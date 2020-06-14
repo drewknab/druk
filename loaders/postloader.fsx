@@ -2,6 +2,7 @@
 #r "../_lib/Markdig.dll"
 
 open Markdig
+open System.IO
 
 type PostConfig = {
     disableLiveRefresh: bool
@@ -9,7 +10,7 @@ type PostConfig = {
 type Post = {
     file: string
     link : string
-    title: string
+    title: string option
     author: string option
     published: System.DateTime option
     tags: string list
@@ -77,23 +78,31 @@ let getContent (fileContent : string) =
 let trimString (str : string) =
     str.Trim().TrimEnd('"').TrimStart('"')
 
+let buildFileName name suffix =
+    (name.ToString() |> Path.GetFileNameWithoutExtension) + suffix 
+
+let filterConfig config criteria = 
+    config |> Map.tryFind criteria
+
 let loadFile n =
-    let text = System.IO.File.ReadAllText n
+    let text = File.ReadAllText n
 
     let config = getConfig text
     let summary, content = getContent text
+    let fileName = buildFileName n
+    let file = Path.Combine(contentDir, fileName ".md").Replace("\\", "/")
+    let link = "/" + Path.Combine(contentDir, fileName ".html").Replace("\\", "/")
 
-    let file = System.IO.Path.Combine(contentDir, (n |> System.IO.Path.GetFileNameWithoutExtension) + ".md").Replace("\\", "/")
-    let link = "/" + System.IO.Path.Combine(contentDir, (n |> System.IO.Path.GetFileNameWithoutExtension) + ".html").Replace("\\", "/")
-
-    let title = config |> Map.find "title" |> trimString
-    let author = config |> Map.tryFind "author" |> Option.map trimString
-    let published = config |> Map.tryFind "published" |> Option.map (trimString >> System.DateTime.Parse)
+    let filter = filterConfig config
+    let title = filter "title" |> Option.map trimString
+    let author = filter "author" |> Option.map trimString
+    let published =
+        filter "published" 
+        |> Option.map (trimString >> System.DateTime.Parse)
 
     let tags =
         let tagsOpt =
-            config
-            |> Map.tryFind "tags"
+            filter "tags"
             |> Option.map (trimString >> fun n -> n.Split ',' |> Array.toList)
         defaultArg tagsOpt []
 
@@ -107,8 +116,8 @@ let loadFile n =
       summary = summary }
 
 let loader (projectRoot: string) (siteContent: SiteContents) =
-    let postsPath = System.IO.Path.Combine(projectRoot, contentDir)
-    System.IO.Directory.GetFiles postsPath
+    let postsPath = Path.Combine(projectRoot, contentDir)
+    Directory.GetFiles postsPath
     |> Array.filter (fun n -> n.EndsWith ".md")
     |> Array.map loadFile
     |> Array.iter siteContent.Add

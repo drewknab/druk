@@ -16,7 +16,7 @@ let generate' (ctx : SiteContents) (page: string) =
         |> Option.map (fun si -> (si.description, si.title))
         |> Option.defaultValue ("", "")
 
-    Layout.layout ctx post.title [
+    Layout.layout ctx (defaultArg post.title "") [
         section [Class "hero is-info is-medium is-bold"] [
             div [Class "hero-body"] [
                 div [Class "container has-text-centered"] [

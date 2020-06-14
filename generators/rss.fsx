@@ -5,6 +5,7 @@
 #endif
 
 open System.Xml.Linq
+open System.Net
 
 let xn name = XName.Get name
 let elem name (value : string) = XElement(xn name, value)
@@ -12,20 +13,21 @@ let elem name (value : string) = XElement(xn name, value)
 let buildElements (items : Postloader.Post list) =
     items
     |> List.sortBy (fun i -> i.published)
-    |> List.map(fun i ->
+    |> List.map (fun i ->
         XElement(xn "item",
-            elem "title" (System.Net.WebUtility.HtmlEncode i.title),
+            elem "title" (WebUtility.HtmlEncode (defaultArg i.title "")),
             elem "link" i.link,
             elem "guid" i.link,
             elem "pubDate" (i.published.ToString()),
-            elem "description" (System.Net.WebUtility.HtmlEncode i.summary)
+            elem "description" (WebUtility.HtmlEncode i.summary)
         )
     )
 
-let channelFeed (channelTitle : string)
-                (channelLink : string)
-                (channelDescription : string)
-                (items : Postloader.Post list) =
+let channelFeed
+    (channelTitle : string)
+    (channelLink : string)
+    (channelDescription : string)
+    (items : Postloader.Post list) =
 
     let elems = buildElements items
 

@@ -46,6 +46,9 @@ let generate' (ctx : SiteContents) (_: string) =
         ]
     ]
 
-let generate (ctx : SiteContents) (projectRoot: string) (page: string) =
+let generate 
+    (ctx : SiteContents)
+    (projectRoot: string)
+    (page: string) =
     generate' ctx page
     |> Layout.render ctx

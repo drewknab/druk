@@ -1,17 +1,48 @@
 ---
 layout: post
-title: Some nice post title
-author: @rogerjmexico
+title: Getting Started with Fornax
+author: Drew
 published: 2020-06-03
 ---
-# Introduction
+# What is Fornax?
 
-Test
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nisi diam, vehicula quis blandit id, suscipit sed libero. Proin at diam dolor. In hac habitasse platea dictumst. Donec quis dui vitae quam eleifend dignissim non sed libero. In hac habitasse platea dictumst. In ullamcorper mollis risus, a vulputate quam accumsan at. Donec sed felis sodales, blandit orci id, vulputate orci.
+[Fornax](https://github.com/ionide/Fornax) is a static site generator written in F#. I think it's pretty neat. Fornax generates static sites through a pipeline of F# scripts called **loaders** that inject content into a global context that is then consumed by more F# scripts called **generators** that mold the content its final form. The workflow is decidedly hands-on with a distinct code first approach. This gives Fornax incredible flexibility.
 
 <!--more-->
 
-Phasellus aliquam tellus eu augue vulputate laoreet. Nunc tincidunt sed mauris eu vestibulum. Quisque id ex eget erat elementum euismod vel nec ex. Nunc et blandit neque. Duis erat ex, facilisis non consectetur sit amet, consectetur mattis ex. Vestibulum quis ligula pharetra, semper nibh nec, porta augue. In placerat auctor risus, eu dictum purus iaculis et. Vivamus viverra sollicitudin augue, in sollicitudin leo malesuada non.
+## Getting Started
+Fornax is installed as a global .Net Core tool on the command line with:
 
-In hac habitasse platea dictumst. Quisque a diam egestas, ornare felis quis, gravida arcu. In vel tellus facilisis, rhoncus ligula sit amet, feugiat massa. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur varius interdum dolor, ut pretium augue egestas id. Aenean vulputate commodo nibh tristique egestas. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus elementum non mi sit amet lacinia.
+`dotnet tool install fornax -g`
+
+This will install Fornax. We can then create a new folder for our new Fornax site, then:
+
+`fornax new`
+
+This will create a new Fornax site using the default blog template.
+
+Now that we have a default Fornax site set up we can run `fornax watch` which will spin up a little server that watches for changes to our project.
+
+Let's take a look at the folder structure now that we have a working Fornax site.
+
+- _lib
+    - Any external libraries we might like to use go in here and can be referenced from the script files.
+    - By default this contains:
+        - Fornax.Core.dll
+        - Markdig.dll
+- _public
+    - This is where the final production built files are created after a build.
+- loaders
+    - Contains all scripts that load data into the global context.
+- generators
+    - Contains all scripts that generate files in _public based on the global context created by **loaders**.
+- images
+    - Images used by our app
+- js
+    - JS used by our app
+- posts
+    - This is a domain specific folder used to hold blog posts written in markdown.
+- style
+    - cSS used by the app
+- config.fsx
+    - This script runs first, we use it to configure the behavior of our generators and add any additional data like secret keys or SQL connection strings.
