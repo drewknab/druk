@@ -9,18 +9,25 @@ open System.Net
 
 let xn name = XName.Get name
 let elem name (value : string) = XElement(xn name, value)
-
+let xc (value : string) = XCData value
 let buildElements (items : Postloader.Post list) =
     items
     |> List.sortBy (fun i -> i.published)
     |> List.map (fun i ->
-        XElement(xn "item",
-            elem "title" (WebUtility.HtmlEncode (defaultArg i.title "")),
-            elem "link" i.link,
-            elem "guid" i.link,
-            elem "pubDate" (i.published.ToString()),
-            elem "description" (WebUtility.HtmlEncode i.summary)
-        )
+        let content = xc i.content
+        let description = elem "description" ("")
+        description.Add(content)
+        let xe =
+            XElement(xn "item",
+                elem "title" (WebUtility.HtmlEncode (defaultArg i.title "")),
+                elem "link" i.link,
+                elem "guid" i.link,
+                elem "pubDate" (i.published.ToString())
+            )
+
+        xe.Add(description)
+
+        xe
     )
 
 let channelFeed
