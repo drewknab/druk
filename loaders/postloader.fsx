@@ -7,6 +7,7 @@ open System.IO
 type PostConfig = {
     disableLiveRefresh: bool
 }
+
 type Post = {
     file: string
     link : string

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Getting Started with Fornax
+title: The Basics of Fornax
 author: Drew
 published: 2020-06-03
 ---
@@ -43,6 +43,8 @@ Let's take a look at the folder structure now that we have a working Fornax site
 - posts
     - This is a domain specific folder used to hold blog posts written in markdown.
 - style
-    - cSS used by the app
+    - CSS used by the app
 - config.fsx
     - This script runs first, we use it to configure the behavior of our generators and add any additional data like secret keys or SQL connection strings.
+
+Next time we'll take a look an in depth look at loaders and generators and what they can do.
