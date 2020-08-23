@@ -99,7 +99,7 @@ let postLayout (useSummary: bool) (post: Postloader.Post) =
         div [Class "card-content"] [
             div [Class "media-content has-text-centered"] [
                 p [Class "title article-title"; ] [
-                    a [Href post.link] [!! post.title]
+                    a [Href post.link] [!! (defaultArg post.title "")]
                 ]
                 p [Class "subtitle is-6 article-subtitle"] [
                     a [Href "#"] [!! (defaultArg post.author "")]
