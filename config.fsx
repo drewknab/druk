@@ -27,6 +27,7 @@ let staticPredicate (projectRoot: string, page: string) =
         page.Contains ".netlify" ||
         page.Contains ".editorconfig" ||
         page.Contains "README" ||
+        page.Contains ".DS_Store" ||
         ext = ".fsx" ||
         ext = ".sh"
     )
@@ -39,7 +40,6 @@ let config = {
         {Script = "staticfile.fsx"; Trigger = OnFilePredicate staticPredicate; OutputFile = SameFileName }
         {Script = "index.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
         {Script = "about.fsx"; Trigger = Once; OutputFile = NewFileName "about.html" }
-        {Script = "contact.fsx"; Trigger = Once; OutputFile = NewFileName "contact.html" }
         {Script = "rss.fsx"; Trigger = Once; OutputFile = NewFileName "feed.xml" }
     ]
 }

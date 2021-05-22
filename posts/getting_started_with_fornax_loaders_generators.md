@@ -4,13 +4,13 @@ title: Learning About Loaders and Generators in Fornax
 author: Drew
 published: 2020-07-06
 ---
-# What happened last time?
+### What happened last time?
 
 Last time we had a brief introduction to [Fornax](https://github.com/ionide/Fornax) (a static site generator written in F#). We went over a brief introduction of getting up and running as well as an overview of the files in a Fornax project. This time we're digging into a nuts and bolts by covering **loaders** and **generators**.
 
 <!--more-->
 
-## Loaders
+#### Loaders
 In order to talk about loaders we have to take a brief detour to talk about **SiteContents**. In Fornax, **SiteContents** is a type defined in the Fornax.Core.dll that can hold any arbitrary number of arbitrary lists of arbitrary objects. Normally, this is a collection of markdown files that are parsed into a collection of **Post** objects, but that's just the beginning.
 
 Now that we have that out of the way, lets have a look at a loader from the project we made last time. Go ahead and take a peek at postloader.fsx. There's quite a lot to take in all at once, so let's break it down.
@@ -76,7 +76,7 @@ The function loadFile does a lot of things I'll leave it to you to figure out th
 
 Now that we've loaded our posts into SiteContents we can take a look at what generators do with that content.
 
-## Generators
+#### Generators
 Once we've churned through that loader and have our contents in memory we can generate some front end content. Let's have a look inside the post.fsx inside the generators folder.
 
 This file is a lot shorter than postloader. Let's start at the bottom.

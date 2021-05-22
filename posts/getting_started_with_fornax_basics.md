@@ -10,7 +10,7 @@ published: 2020-06-03
 
 <!--more-->
 
-## Getting Started
+### Getting Started
 Fornax is installed as a global .Net Core tool on the command line with:
 
 `dotnet tool install fornax -g`

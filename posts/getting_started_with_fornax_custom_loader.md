@@ -6,20 +6,20 @@ tags: fsharp, fornax
 published: 2020-08-22
 ---
 
-# What happened last time?
+### What happened last time?
 
 Last time we had an introduction to [Fornax](https://github.com/ionide/Fornax) loaders and generators. Today we're going to build a custom loader and generator using an external REST API.
 
 <!--more-->
 
-## Before We Begin
+#### Before We Begin
 To facilitate working with data from APIs or sources outside of markdown we're going to bring in a library. Because Fornax is, at heart, a small collection of F# scripts consumed by a library, we won't be dealing with a package manager. I went to [FSharp.Data](http://fsharp.github.io/FSharp.Data) and downloaded the precompiled binaries and dropped FSharp.Data.dll and FSharp.Data.DesignTime.dll into the _lib folder.
 
 FSharp.Data is a collection of parsers and type providers that simplify common data routines and allows a more F# centric, functional first, way than if we were to use built in .NET Framework or C# libraries.
 
 The API we're going to use is [Cat Facts](https://cat-fact.herokuapp.com/#/) because it's free, open, and is a collection of facts about cats.
 
-## Custom Cat Facts Loader
+#### Custom Cat Facts Loader
 We'll make a new file in the loaders folder called catfacts.fsx.
 
 At the top of the file we'll bring in our assembly references:
@@ -98,7 +98,7 @@ Now that we have our sequence we can pipe that into Seq.take to cut down on the 
 
 That's it, we now have a custom loader that consumes an external API.
 
-## Custom Cat Facts Generator
+#### Custom Cat Facts Generator
 Now that we have all of our Cat Facts data loaded into SiteContents, let's bring it out into a generator. We'll make a new file called catfacts.fsx in the generators folder.
 
 Then we'll whip up something that looks like this:
@@ -179,7 +179,7 @@ let catfactCard (fact : Catfactsloader.CatFacts) =
 
 Here we see catfactCard is just a function that takes a CatFact and returns an HtmlElement with CatFact.Text in a div. With that, we should have a working generator ready to build some content.
 
-## Final Steps
+#### Final Steps
 The last thing we have to do is register the generator in config.fsx in the root of our project.
 ```fsharp
 let config = {
