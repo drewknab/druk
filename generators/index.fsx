@@ -18,14 +18,6 @@ let generate' (ctx : SiteContents) (_: string) =
         |> List.map (Layout.postLayout true)
 
     Layout.layout ctx "Home" [
-        section [Class "hero is-info is-medium is-bold"] [
-            div [Class "hero-body"] [
-                div [Class "container has-text-centered"] [
-                    h1 [Class "title"] [!!title]
-                    span [] [!!desc]
-                ]
-            ]
-        ]
         div [Class "container"] [
             section [Class "articles"] [
                 div [Class "column is-8 is-offset-2"] psts

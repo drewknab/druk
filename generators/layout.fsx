@@ -56,11 +56,10 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "icon"; Type "image/png"; Sizes "32x32"; Href "/images/favicon.png"]
             link [Rel "stylesheet"; Href "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"]
             link [Rel "stylesheet"; Href "https://fonts.googleapis.com/css?family=Open+Sans"]
-            link [Rel "stylesheet"; Href "https://unpkg.com/bulma@0.8.0/css/bulma.min.css"]
-            link [Rel "stylesheet"; Type "text/css"; Href "/style/style.css"]
+            link [Rel "stylesheet"; Type "text/css"; Href "/style/bulmaswatch.min.css"]
         ]
         body [] [
-            nav [Class "navbar"] [
+            nav [Class "navbar is-primary"] [
                 div [Class "container"] [
                     div [Class "navbar-brand"] [
                         a [Class "navbar-item"; Href "/"] [
@@ -95,15 +94,14 @@ let published (post: Postloader.Post) =
     |> fun n -> n.ToString("yyyy-MM-dd")
 
 let postLayout (useSummary: bool) (post: Postloader.Post) =
-    div [Class "card article"] [
+    div [Class "card"] [
         div [Class "card-content"] [
-            div [Class "media-content has-text-centered"] [
-                p [Class "title article-title"; ] [
+            div [Class "media-content"] [
+                p [Class "title"; ] [
                     a [Href post.link] [!! (defaultArg post.title "")]
                 ]
                 p [Class "subtitle is-6 article-subtitle"] [
-                    a [Href "#"] [!! (defaultArg post.author "")]
-                    !! (sprintf "on %s" (published post))
+                    !! (sprintf "Published on %s" (published post))
                 ]
             ]
             div [Class "content article-body"] [
