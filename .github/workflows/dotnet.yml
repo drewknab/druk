@@ -1,0 +1,29 @@
+name: Fornax
+
+on:
+  push:
+    branches: [ deploy ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@deploy
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.x
+    - name: Install Fornax
+      run: dotnet tool install -g fornax
+    - name: Build with Fornax
+      run: fornax build
+    - name: Publish with Fornax
+      uses: netlify/actions/cli@master
+      env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      with:
+        args: deploy --dir=_public
+        secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
