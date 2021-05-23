@@ -7,8 +7,6 @@ let about = "I'm Drew Knab, full-stack developer at SIDEARM Sports.
              I play trading card games competatively sometimes and
              make music even less. I live in Syracuse, NY. It's fine.
              Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>.
-             <p>
-             Hero image credit: <a href='https://unsplash.com/photos/x48QL8gNYZ8'>Artur Rutkowski</a>
  "
 
 let generate' (ctx : SiteContents) (_: string) =
