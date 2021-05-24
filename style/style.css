@@ -39,7 +39,7 @@ tml,body {
     margin-bottom: 1rem;
   }
   .media-content {
-    margin-top: 3rem;
+    /*margin-top: 3rem;*/
   }
   .article, .promo-block {
   }
@@ -53,11 +53,34 @@ tml,body {
     line-height: 2;
   }
   .article-subtitle {
-    margin-bottom: 3rem;
+    margin-bottom: 20px !important;
+    margin-top: 20px;
   }
   .article-body {
     line-height: 1.4;
   }
   .promo-block .container {
     margin: 1rem 5rem;
+  }
+  .tombstone {
+    margin-bottom: 2em;
+    margin-top: 2em;
+  }
+  .summary-block {
+    border: #fff solid 1px;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: .5em
+  }
+
+  .articles a {
+    color: #3ec46d;
+  }
+
+  .articles a:hover {
+    color: #3fa9da;
+  }
+  
+  .story-wrapper {
+    margin-top: 2em;
   }

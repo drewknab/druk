@@ -4,13 +4,11 @@ title: The Basics of Fornax
 author: Drew
 published: 2020-06-03
 ---
-# What is Fornax?
 
 [Fornax](https://github.com/ionide/Fornax) is a static site generator written in F#. I think it's pretty neat. Fornax generates static sites through a pipeline of F# scripts called **loaders** that inject content into a global context that is then consumed by more F# scripts called **generators** that mold the content its final form. The workflow is decidedly hands-on with a distinct code first approach. This gives Fornax incredible flexibility.
 
 <!--more-->
 
-### Getting Started
 Fornax is installed as a global .Net Core tool on the command line with:
 
 `dotnet tool install fornax -g`

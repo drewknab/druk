@@ -4,7 +4,6 @@ title: Learning About Loaders and Generators in Fornax
 author: Drew
 published: 2020-07-06
 ---
-### What happened last time?
 
 Last time we had a brief introduction to [Fornax](https://github.com/ionide/Fornax) (a static site generator written in F#). We went over a brief introduction of getting up and running as well as an overview of the files in a Fornax project. This time we're digging into a nuts and bolts by covering **loaders** and **generators**.
 

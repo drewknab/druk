@@ -6,8 +6,6 @@ tags: fsharp, fornax
 published: 2020-08-22
 ---
 
-### What happened last time?
-
 Last time we had an introduction to [Fornax](https://github.com/ionide/Fornax) loaders and generators. Today we're going to build a custom loader and generator using an external REST API.
 
 <!--more-->

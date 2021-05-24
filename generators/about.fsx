@@ -9,8 +9,12 @@ let about = "I'm Drew Knab, full-stack developer at SIDEARM Sports.
              Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>.
  "
 
+let test =
+    System.Console.WriteLine "yay"
+
 let generate' (ctx : SiteContents) (_: string) =
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
+    test
     let desc =
         siteInfo
         |> Option.map (fun si -> si.description)
