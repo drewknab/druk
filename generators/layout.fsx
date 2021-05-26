@@ -80,7 +80,7 @@ let layout (ctx : SiteContents) active bodyContent =
                             a [Class "navbar-item"; Href "https://github.com/drewknab"][
                                 span [Class "icon-text"] [
                                     span [Class "icon"] [
-                                        i [Class "fas fa-github"] []
+                                        i [Class "fa fa-github"] []
                                     ]
                                     span [] [!! "GitHub"]
                                 ]
@@ -90,7 +90,7 @@ let layout (ctx : SiteContents) active bodyContent =
                             a [Class "navbar-item"; Href "/feed.xml"][
                                 span [Class "icon-text"] [
                                     span [Class "icon"] [
-                                        i [Class "fas fa-rss"] []
+                                        i [Class "fa fa-rss"] []
                                     ]
                                     span [] [!! "RSS"]
                                 ]
@@ -123,7 +123,7 @@ let published (post: Postloader.Post) =
 let postLayout (useSummary: bool) (post: Postloader.Post) =
     let (year, month, day) = published post
     if useSummary then
-        div [Class "summary-block"] [
+        article [Class "summary-block"] [
             div [Class "columns is-vcentered"] [
                 div [Class "column is-one-fifth"] [
                     div [Class "date has-text-centered"] [
@@ -143,7 +143,7 @@ let postLayout (useSummary: bool) (post: Postloader.Post) =
             ]
         ]
     else
-        div [Class "story-wrapper"] [
+        article [Class "story-wrapper"] [
             p [Class "title is-spaced "; ] [
                 !! (defaultArg post.title "")
             ]
