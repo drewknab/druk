@@ -30,7 +30,7 @@ let injectWebsocketCode (webpage:string) =
     let index = webpage.IndexOf head
     webpage.Insert ( (index + head.Length + 1),websocketScript)
 
-let layout (ctx : SiteContents) active bodyCnt =
+let layout (ctx : SiteContents) active bodyContent =
     let pages = ctx.TryGetValues<Pageloader.Page> () |> Option.defaultValue Seq.empty
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
     let ttl =
@@ -60,31 +60,57 @@ let layout (ctx : SiteContents) active bodyCnt =
             link [Rel "stylesheet"; Type "text/css"; Href "/style/style.css"]
         ]
         body [] [
-            nav [Class "navbar is-dark"] [
-                div [Class "navbar-brand"] [
-                    a [Class "navbar-item"; Href "/"] [
-                        img [Src "/images/logo.png"; Alt "Logo"]
+            nav [Class "navbar"] [
+                div [Class "container"] [
+                    div [Class "navbar-brand"] [
+                        a [Class "navbar-item"; Href "/"] [
+                            img [Src "/images/logo.png"; Alt "Logo"]
+                        ]
+                        span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
+                            span [] []
+                            span [] []
+                            span [] []
+                        ]
                     ]
-                    span [Class "navbar-burger burger"; Custom ("data-target", "navbarMenu")] [
-                        span [] []
-                        span [] []
-                        span [] []
+
+                    div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
+
+                    div [Class "navbar-end"] [
+                        div [Class "navbar-item"] [
+                            a [Class "navbar-item"; Href "https://github.com/drewknab"][
+                                span [Class "icon-text"] [
+                                    span [Class "icon"] [
+                                        i [Class "fas fa-github"] []
+                                    ]
+                                    span [] [!! "GitHub"]
+                                ]
+                            ]
+                        ]
+                        div [Class "navbar-item"] [
+                            a [Class "navbar-item"; Href "/feed.xml"][
+                                span [Class "icon-text"] [
+                                    span [Class "icon"] [
+                                        i [Class "fas fa-rss"] []
+                                    ]
+                                    span [] [!! "RSS"]
+                                ]
+                            ]
+                        ]
                     ]
                 ]
-                div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
             ]
-            yield! bodyCnt
+            yield! bodyContent
             script [Type "text/javascript"; Src "/js/main.js"] []
         ]
     ]
 
-let render (ctx : SiteContents) cnt =
+let render (ctx : SiteContents) content =
     let disableLiveRefresh =
         ctx.TryGetValue<Postloader.PostConfig> ()
         |> Option.map (fun n -> n.disableLiveRefresh)
         |> Option.defaultValue false
 
-    cnt
+    content
     |> HtmlElement.ToString
     |> fun n -> if disableLiveRefresh then n else injectWebsocketCode n
 

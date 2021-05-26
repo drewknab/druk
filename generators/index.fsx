@@ -3,6 +3,12 @@
 
 open Html
 
+let about = "I'm Drew Knab, full-stack developer at
+             <a href='https://sidearmsports.com'>SIDEARM Sports.</a>
+             I play trading card games competatively sometimes and
+             make music even less. I live in Syracuse, NY. It's fine.
+             Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>.
+ "
 let generate' (ctx : SiteContents) (_: string) =
     let posts = ctx.TryGetValues<Postloader.Post> () |> Option.defaultValue Seq.empty
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
@@ -18,10 +24,24 @@ let generate' (ctx : SiteContents) (_: string) =
         |> List.map (Layout.postLayout true)
 
     Layout.layout ctx "Home" [
-        div [Class "container"] [
-            section [Class "articles"] [
-                div [Class "column is-8 is-offset-2"] psts
+        section [Class "masthead container"][
+            div [Class "columns is-vcentered"] [
+                div [Class "column is-two-fifths is-flex selfie-box "] [
+                    img [Class "selfie"; Src "/images/me.jpg"; Alt "Drew Knab, Goober"]
+                ]
+                div [Class "column is-three-fifths"] [
+                    p [Class "is-size-3 has-text-justified"][
+                        !! (about)
+                    ]
+                ]
             ]
+            hr [Class "masthead-divider"]
+        ]
+        section [Class "articles container"] [
+            h3 [Class "latest-border is-size-3 has-text-right"] [
+                !! "Latest"
+            ]
+            div [Class ""] psts
         ]
     ]
 

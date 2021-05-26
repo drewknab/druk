@@ -34,15 +34,21 @@ tml,body {
       border: 3px solid #ccc;
       border-radius: 50%;
   }
+
   .media-center {
     display: block;
     margin-bottom: 1rem;
   }
+
   .media-content {
     /*margin-top: 3rem;*/
   }
+
   .article, .promo-block {
+    padding-left: 10px;
+    padding-right: 10px;
   }
+
   div.column.is-8:first-child {
     padding-top: 0;
     margin-top: 0;
@@ -67,20 +73,47 @@ tml,body {
     margin-top: 2em;
   }
   .summary-block {
-    border: #fff solid 1px;
     margin-top: 2em;
     margin-bottom: 2em;
     padding: .5em
   }
 
-  .articles a {
-    color: #3ec46d;
+  .articles a,
+  .masthead a {
+    color: #48c774;
   }
 
-  .articles a:hover {
+  .articles a:hover,
+  .masthead a:hover {
     color: #3fa9da;
   }
   
   .story-wrapper {
     margin-top: 2em;
+  }
+
+  .selfie {
+    max-width: 300px;
+  }
+
+  .selfie-box {
+    justify-content: center;
+  }
+
+  .masthead {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .masthead-divider {
+    background-color: #f14668;
+    margin: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .latest-border {
+    padding-right: 10px;
   }
