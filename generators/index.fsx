@@ -5,10 +5,10 @@ open Html
 
 let about = "I'm Drew Knab, full-stack developer at
              <a href='https://sidearmsports.com'>SIDEARM Sports.</a>
-             I play trading card games competatively sometimes and
+             I play trading card games competitively sometimes and
              make music even less. I live in Syracuse, NY. It's fine.
-             Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>.
- "
+             Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>."
+
 let generate' (ctx : SiteContents) (_: string) =
     let posts = ctx.TryGetValues<Postloader.Post> () |> Option.defaultValue Seq.empty
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
@@ -19,7 +19,8 @@ let generate' (ctx : SiteContents) (_: string) =
 
     let psts =
         posts
-        |> Seq.sortByDescending Layout.published
+        |> Seq.sortBy Layout.published
+        |> Seq.truncate 5
         |> Seq.toList
         |> List.map (Layout.postLayout true)
 
