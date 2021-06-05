@@ -73,30 +73,33 @@ let layout (ctx : SiteContents) active bodyContent =
                         ]
                     ]
 
-                    div [Id "navbarMenu"; Class "navbar-menu"] menuEntries
-
-                    div [Class "navbar-end"] [
-                        div [Class "navbar-item"] [
-                            a [Class "navbar-item"; Href "https://github.com/drewknab"][
-                                span [Class "icon-text"] [
-                                    span [Class "icon"] [
-                                        i [Class "fa fa-github"] []
+                    div [Id "navbarMenu"; Class "navbar-menu"] [
+                        for menuEntry in menuEntries do
+                            menuEntry
+                        div [Class "navbar-end"] [
+                            div [Class "navbar-item"] [
+                                a [Class "navbar-item"; Href "https://github.com/drewknab"][
+                                    span [Class "icon-text"] [
+                                        span [Class "icon"] [
+                                            i [Class "fa fa-github"] []
+                                        ]
+                                        span [] [!! "GitHub"]
                                     ]
-                                    span [] [!! "GitHub"]
                                 ]
                             ]
-                        ]
-                        div [Class "navbar-item"] [
-                            a [Class "navbar-item"; Href "/feed.xml"][
-                                span [Class "icon-text"] [
-                                    span [Class "icon"] [
-                                        i [Class "fa fa-rss"] []
+                            div [Class "navbar-item"] [
+                                a [Class "navbar-item"; Href "/feed.xml"][
+                                    span [Class "icon-text"] [
+                                        span [Class "icon"] [
+                                            i [Class "fa fa-rss"] []
+                                        ]
+                                        span [] [!! "RSS"]
                                     ]
-                                    span [] [!! "RSS"]
                                 ]
                             ]
                         ]
                     ]
+
                 ]
             ]
             yield! bodyContent
@@ -127,9 +130,9 @@ let postLayout (useSummary: bool) (post: Postloader.Post) =
             div [Class "columns is-vcentered"] [
                 div [Class "column is-one-fifth"] [
                     div [Class "date has-text-centered"] [
-                        div [Class "month is-size-5"] [!! month]
-                        div [Class "day is-size-4"] [!! day]
-                        div [Class "year is-size-5"] [!!year]
+                        span [Class "month"] [!! month]
+                        span [Class "day"] [!! day]
+                        span [Class "year"] [!!year]
                     ]
                 ]
                 div [Class "column is-four-fifths"] [

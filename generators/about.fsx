@@ -3,34 +3,49 @@
 
 open Html
 
-let about = "I'm Drew Knab, full-stack developer at SIDEARM Sports.
-             I play trading card games competatively sometimes and
-             make music even less. I live in Syracuse, NY. It's fine.
-             Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>.
- "
+let about = "Lately I find myself working mostly in .NET technologies
+             but I've delivered quality software in both Node
+             and PHP with a spicy plethora of SQL and NoSQL databases.
+             I've mostly worked with Vue and Angular with a tiny bit of
+             React mixed in. There have even been some desktop applications
+             mixed in on occasion."
 
-let test =
-    System.Console.WriteLine "yay"
+let history = "I'm largely self-taught having started Web development in 2003.
+               Got my for-real first professional job in 2013.
+               I went to school for Journalism at SUNY Brockport because I
+               wanted to be a writer for a minute there. The only downsides are
+               I've never been formally graded on writing a compiler from
+               scratch and my understanding of pointers in C is a little weak."
 
 let generate' (ctx : SiteContents) (_: string) =
     let siteInfo = ctx.TryGetValue<Globalloader.SiteInfo> ()
-    test
     let desc =
         siteInfo
         |> Option.map (fun si -> si.description)
         |> Option.defaultValue ""
 
 
-    Layout.layout ctx "Home" [
+    Layout.layout ctx "About" [
         div [Class "container"] [
             section [Class "articles"] [
-                div [Class "column is-8 is-offset-2"] [
-                    div [Class "card article"] [
-                        div [Class "card-content"] [
-                            div [Class "content article-body"] [
-                                !! about
-                            ]
-                        ]
+                article [Class "story-wrapper column is-8 is-offset-2"] [
+                    h2 [Class "is-size-3"] [
+                        !! "About"
+                    ]
+                    p [] [
+                        !! "Hello, I'm Drew. I'm a full-stack developer in a variety of stacks."
+                    ]
+                    h2 [Class "is-size-3"] [
+                        !! "What I do"
+                    ]
+                    p [] [
+                        !! about
+                    ]
+                    h2 [Class "is-size-3"] [
+                        !! "History"
+                    ]
+                    p [] [
+                        !! history
                     ]
                 ]
             ]

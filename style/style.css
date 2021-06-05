@@ -1,7 +1,7 @@
 
 tml,body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    font-size: 14px;
+    font-size: 1.3em;
     background: #000;
   }
   .navbar.is-white {
@@ -21,7 +21,6 @@ tml,body {
   }
   */
   .articles .content p {
-      line-height: 1.9;
       margin: 15px 0;
   }
   .author-image {
@@ -77,6 +76,9 @@ tml,body {
     margin-bottom: 2em;
     padding: .5em
   }
+  .articles {
+    font-size: 
+  }
 
   .articles a,
   .masthead a {
@@ -90,6 +92,7 @@ tml,body {
   
   .story-wrapper {
     margin-top: 2em;
+    line-height: 2.4em;
   }
 
   .selfie {
@@ -116,4 +119,14 @@ tml,body {
 
   .latest-border {
     padding-right: 10px;
+  }
+
+  .date span {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .date span {
+      display: inline;
+    }
   }
