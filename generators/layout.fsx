@@ -59,6 +59,7 @@ let layout (ctx : SiteContents) active bodyContent =
             link [Rel "stylesheet"; Href "https://fonts.googleapis.com/css?family=Open+Sans"]
             link [Rel "stylesheet"; Type "text/css"; Href "/style/bulmaswatch.min.css"]
             link [Rel "stylesheet"; Type "text/css"; Href "/style/style.css"]
+            link [Rel "stylesheet"; Type "text/css"; Href "/style/monokai-sublime.css"]
         ]
         body [] [
             nav [Class "navbar"] [
@@ -104,7 +105,11 @@ let layout (ctx : SiteContents) active bodyContent =
                 ]
             ]
             yield! bodyContent
+            script [Type "text/javascript"; Src "/js/highlight.min.js"] []
             script [Type "text/javascript"; Src "/js/main.js"] []
+            script [Type "text/javascript";] [
+                !! "hljs.highlightAll();"
+            ]
         ]
     ]
 

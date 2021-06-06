@@ -21,11 +21,11 @@ The API we're going to use is [Cat Facts](https://cat-fact.herokuapp.com/#/) bec
 We'll make a new file in the loaders folder called catfacts.fsx.
 
 At the top of the file we'll bring in our assembly references:
-```fsharp
+```fsharp 
     #r "../_lib/Fornax.Core.dll"
     #r "../_lib/FSharp.Data.dll"
     open FSharp.Data
-```
+``` 
 
 That's it, now we can use FSharp.Data to handle our HTTP request and JSON parsing.
 
