@@ -12,6 +12,15 @@ let postPredicate (projectRoot: string, page: string) =
     else
         false
 
+let pagePredicate (projectRoot: string, page: string) =
+    let fileName = Path.Combine(projectRoot,page)
+    let ext = Path.GetExtension page
+    if ext = ".md" then
+        let ctn = File.ReadAllText fileName
+        ctn.Contains("layout: page")
+    else
+        false
+
 let staticPredicate (projectRoot: string, page: string) =
     let ext = Path.GetExtension page
     not (
@@ -32,11 +41,19 @@ let staticPredicate (projectRoot: string, page: string) =
         ext = ".sh"
     )
 
+let pageFileName (page: string) =
+    let parentDirectory = Path.GetDirectoryName page
+    let rootDirectory = Path.GetDirectoryName parentDirectory
+    let newPath = Path.Combine(rootDirectory, Path.GetFileName page)
+    Path.ChangeExtension(newPath, ".html")
+    
+
 let config = {
     Generators = [
         {Script = "less.fsx"; Trigger = OnFileExt ".less"; OutputFile = ChangeExtension "css" }
         {Script = "sass.fsx"; Trigger = OnFileExt ".scss"; OutputFile = ChangeExtension "css" }
         {Script = "post.fsx"; Trigger = OnFilePredicate postPredicate; OutputFile = ChangeExtension "html" }
+        {Script = "page.fsx"; Trigger = OnFilePredicate pagePredicate; OutputFile = Custom(pageFileName) }
         {Script = "staticfile.fsx"; Trigger = OnFilePredicate staticPredicate; OutputFile = SameFileName }
         {Script = "index.fsx"; Trigger = Once; OutputFile = NewFileName "index.html" }
         {Script = "about.fsx"; Trigger = Once; OutputFile = NewFileName "about.html" }

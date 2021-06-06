@@ -1,6 +1,7 @@
 #r "../_lib/Fornax.Core.dll"
 #if !FORNAX
 #load "../loaders/postloader.fsx"
+#load "../loaders/commonloader.fsx"
 #load "../loaders/pageloader.fsx"
 #load "../loaders/globalloader.fsx"
 #endif
@@ -117,14 +118,31 @@ let render (ctx : SiteContents) content =
     |> HtmlElement.ToString
     |> fun n -> if disableLiveRefresh then n else injectWebsocketCode n
 
-let published (post: Postloader.Post) =
-    post.published
+let breakupDates (date: System.DateTime option) =
+    date
     |> Option.defaultValue System.DateTime.Now
     |> fun n -> n.ToString("yyyy-MMM-dd").Split("-")
     |> fun m -> (m.[0], m.[1], m.[2])
 
+let pageLayout (page: Commonloader.Page) =
+    let (upYear, upMonth, upDay) = breakupDates page.updated
+    article [Class "story-wrapper"] [
+        p [Class "title is-spaced "; ] [
+            !! (defaultArg page.title "")
+        ]
+        p [Class "is-6 article-subtitle "] [
+            !! (sprintf "Last updated on %s %s, %s" upMonth upDay upYear)
+        ]
+        div [Class "content article-body"] [
+            !! page.content
+        ]
+        div [Class "tombstone is-size-4 has-text-right"] [
+            !! (sprintf "&#8718;")
+        ]
+    ]
+
 let postLayout (useSummary: bool) (post: Postloader.Post) =
-    let (year, month, day) = published post
+    let (year, month, day) = breakupDates post.published
     if useSummary then
         article [Class "summary-block"] [
             div [Class "columns is-vcentered"] [

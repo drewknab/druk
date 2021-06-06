@@ -19,7 +19,7 @@ let generate' (ctx : SiteContents) (_: string) =
 
     let psts =
         posts
-        |> Seq.sortBy Layout.published
+        |> Seq.sortByDescending (fun n -> n.published)
         |> Seq.truncate 5
         |> Seq.toList
         |> List.map (Layout.postLayout true)

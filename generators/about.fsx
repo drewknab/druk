@@ -47,6 +47,16 @@ let generate' (ctx : SiteContents) (_: string) =
                     p [] [
                         !! history
                     ]
+                    h2 [Class "is-size-3"] [
+                        !! "Other Details"
+                    ]
+                    ul [] [
+                        li [] [
+                            a [Href "uses.html"] [
+                                !! "Uses"
+                            ]
+                        ]
+                    ]
                 ]
             ]
         ]
