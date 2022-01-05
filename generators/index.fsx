@@ -3,8 +3,8 @@
 
 open Html
 
-let about = "I'm Drew Knab, full-stack developer at
-             <a href='https://sidearmsports.com'>SIDEARM Sports.</a>
+let about = "I'm Drew Knab, senior full-stack developer at
+             <a href='https://directlink.ai/'>directlink.</a>
              I play trading card games competitively sometimes and
              make music even less. I live in Syracuse, NY. It's fine.
              Sometimes I stream <a href='https://www.twitch.tv/rogerjmexico'>on twitch</a>."
