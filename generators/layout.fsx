@@ -80,7 +80,7 @@ let layout (ctx : SiteContents) active bodyContent =
                             menuEntry
                         div [Class "navbar-end"] [
                             div [Class "navbar-item"] [
-                                a [Class "navbar-item"; Href "https://github.com/drewknab"][
+                                a [Class "navbar-item"; Href "https://github.com/drewknab"] [
                                     span [Class "icon-text"] [
                                         span [Class "icon"] [
                                             i [Class "fa fa-github"] []
@@ -90,7 +90,7 @@ let layout (ctx : SiteContents) active bodyContent =
                                 ]
                             ]
                             div [Class "navbar-item"] [
-                                a [Class "navbar-item"; Href "/feed.xml"][
+                                a [Class "navbar-item"; Href "/feed.xml"] [
                                     span [Class "icon-text"] [
                                         span [Class "icon"] [
                                             i [Class "fa fa-rss"] []

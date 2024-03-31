@@ -3,7 +3,7 @@ layout: page
 title: Uses
 author: Drew
 published: 2021-06-05
-updated: 2021-06-05
+updated: 2024-02-02
 ---
 
 ### Workspace
@@ -71,12 +71,9 @@ I split my time between two laptops.
 
 I have a heirarchy of editor choices.
 
-- Vim
-
-    My go to is Vim (gvim if I'm on windows).
 - Neovim
 
-    I recently started testing this out when I'm writing F# code, I don't hate it.
+    Officially switched from Vim to Neovim. It's just better in every way.
 - Visual Studio Code (with a Vim plugin)
 
     If I need something that I don't have/would be a pain to setup in Vim, I'll switch to VSCode.
@@ -84,7 +81,7 @@ I have a heirarchy of editor choices.
     Example: TypeScript, C#, basically anything with an abundance of user defined static types.
 - Visual Studio 20XX (with a Vim plugin)
 
-    I use this for the day job. It's more or less a necessity.
+    Visual Studio Code has better C# suppoer than it has in the past, but is till can't match big papa VS.
 
 ### Command Lines
 

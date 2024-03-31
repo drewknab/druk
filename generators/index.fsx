@@ -25,13 +25,13 @@ let generate' (ctx : SiteContents) (_: string) =
         |> List.map (Layout.postLayout true)
 
     Layout.layout ctx "Home" [
-        section [Class "masthead container"][
+        section [Class "masthead container"] [
             div [Class "columns is-vcentered"] [
                 div [Class "column is-two-fifths is-flex selfie-box "] [
                     img [Class "selfie"; Src "/images/me.jpg"; Alt "Drew Knab, Goober"]
                 ]
                 div [Class "column is-three-fifths"] [
-                    p [Class "is-size-3 has-text-justified"][
+                    p [Class "is-size-3 has-text-justified"] [
                         !! (about)
                     ]
                 ]
