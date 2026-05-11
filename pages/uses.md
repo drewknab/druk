@@ -62,14 +62,14 @@ I split my time between two laptops.
     It's really expensive for what it is, but I really like it. Sorry, I'm a Topre apologist.
 - [WASD VP3 61 Key MX Green](https://www.wasdkeyboards.com/wasd-vp3-61-key-custom-mechanical-keyboard.html)
 
-    MX Green was maybe not the best decision. It's loud as hell and is a repetative strain issue waiting to happen. Kinda still like it though.
+    MX Green was maybe not the best decision. It's loud as hell and is a repetitive strain issue waiting to happen. Kinda still like it though.
 - [Microsoft Sculpt Ergonomic](https://www.amazon.com/Microsoft-Ergonomic-Keyboard-Business-5KV-00001/dp/B00CYX26BC)
 
     I break this out if I'm having pains where I shouldn't have pains. It's okay, someday I'd like something similar with mechanical switches.
 
 ### Editors
 
-I have a heirarchy of editor choices.
+I have a hierarchy of editor choices.
 
 - Neovim
 
@@ -81,7 +81,7 @@ I have a heirarchy of editor choices.
     Example: TypeScript, C#, basically anything with an abundance of user defined static types.
 - Visual Studio 20XX (with a Vim plugin)
 
-    Visual Studio Code has better C# suppoer than it has in the past, but is till can't match big papa VS.
+    Visual Studio Code has better C# support than it has in the past, but is till can't match big papa VS.
 
 ### Command Lines
 

@@ -5,7 +5,7 @@ author: Drew
 published: 2024-02-02
 ---
 
-2023 was, by many metrics, my least musical year. Across the board the numbers are glaring. Fewest new artists, genres, scrobbles, and raw minutes. Once again dominated by Boards of Canada and Lana Del Rey. Historically those two groups have made up the bulk of my listening during my professional career. It's easy to put either one on and git a massive amount of work done. Even so, we're looking at historic lows even for BoC.
+2023 was, by many metrics, my least musical year. Across the board the numbers are glaring. Fewest new artists, genres, scrobbles, and raw minutes. Once again dominated by Boards of Canada and Lana Del Rey. Historically those two groups have made up the bulk of my listening during my professional career. It's easy to put either one on and get a massive amount of work done. Even so, we're looking at historic lows even for BoC.
 
 <!--more-->
 

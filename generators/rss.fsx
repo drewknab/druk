@@ -12,7 +12,7 @@ let elem name (value : string) = XElement(xn name, value)
 let xc (value : string) = XCData value
 let buildElements (items : Postloader.Post list) =
     items
-    |> List.sortBy (fun i -> i.published)
+    |> List.sortByDescending (fun i -> i.published)
     |> List.map (fun i ->
         let content = xc i.content
         let description = elem "description" ("")
@@ -20,9 +20,9 @@ let buildElements (items : Postloader.Post list) =
         let xe =
             XElement(xn "item",
                 elem "title" (WebUtility.HtmlEncode (defaultArg i.title "")),
-                elem "link" i.link,
-                elem "guid" i.link,
-                elem "pubDate" (i.published.ToString())
+                elem "link" $"https://druk.dev{i.link}",
+                elem "guid" $"https://druk.dev{i.link}",
+                elem "pubDate" (i.published.Value.ToString("r"))
             )
 
         xe.Add(description)
@@ -42,12 +42,13 @@ let channelFeed
         XDeclaration("1.0", "utf-8", "yes"),
         XElement(xn "rss",
             XAttribute(xn "version", "2.0"),
+            XElement(xn "channel", 
             elem "title" channelTitle,
-            elem "link" channelLink,
+            elem "link" $"https://{channelLink}",
             elem "description" channelDescription,
             elem "language" "en-us",
-            XElement(xn "channel", elems)
-        ) |> box
+            elems
+        )) |> box
     ).ToString()
 
 

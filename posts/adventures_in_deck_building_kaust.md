@@ -2,6 +2,7 @@
 layout: post
 title: Adventures in Deck Building: Kaust, Eyes of the Glade
 author: Drew
+tags: magic
 published: 2024-05-22
 ---
 
@@ -24,13 +25,11 @@ How do we make the most of these two cards? Their overall effect is fairly simil
 We have two distinct lines then, both resulting in different flavors of infinite mana. There are plenty of ways to do this in Naya.
 
 To get the most out of Mastery of the Unseen we simply need the ability to make infinite (white) mana. Some of our options include:
-- Emiel the Blessed + Dockside Extortionist + four artifacts/enchantments on opponent boards
 - Emiel the Blessed + Selvala, Heart of the Wild + Misc. Haste Enabler
 - Selvala, Heart of the Wilds + Staff of Domination + Misc. six power creature
 And so on, we can adjust to taste and budget.
 
-In the case of Ugin's Mastery we need don't necessarily need infinite mana, we just need to loop casting a colorless spell.
-For this we can 
+In the case of Ugin's Mastery we need don't necessarily need infinite mana, we just need to loop casting a colorless spell. Cloudstone Curio makes this a relative breeze.
 
 
 ## Of Manifests and Cloaks
