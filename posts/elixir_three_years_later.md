@@ -32,8 +32,8 @@ We didn't know what performant Elixir even looked like, but three of us (myself 
 
 My main arguments against incorporating it into the organization were:
 1. We didn't actually know that much about telephony
-2. We don't actually know that much about Elixir
-3. We do actually know about NLP
+2. We didn't actually know that much about Elixir
+3. We did know quite a bit about NLP
 4. We will be learning two distinct technologies on the fly
 5. Any new software engineer added to the team will be where we were when the project started
 
